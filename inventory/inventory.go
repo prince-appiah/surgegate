@@ -10,12 +10,14 @@ type Inventory struct {
 
 var ErrOutOfStock = errors.New("item is out of stock")
 
-func (inventory *Inventory) Purchase() error {
+const UnitsPerPurchase = 1
+
+func (inventory *Inventory) Purchase() (int, error) {
 
 	if inventory.Available == 0 {
-		return ErrOutOfStock
+		return inventory.Available, ErrOutOfStock
 	}
 
-	inventory.Available--
-	return nil
+	inventory.Available -= UnitsPerPurchase
+	return inventory.Available, nil
 }

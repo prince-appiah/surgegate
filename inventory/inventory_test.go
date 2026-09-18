@@ -6,29 +6,51 @@ import (
 )
 
 func TestPurchase(t *testing.T) {
-	inventory := &Inventory{Available: 1}
-
-	err := inventory.Purchase()
-	if err != nil {
-		t.Fatalf("expected first purchase to succeed, got %v", err)
+	tests := []struct {
+		name              string
+		startingAvailable int
+		wantRemaining     int
+		wantErr           error
+	}{
+		{
+			name:              "purchase with available inventory",
+			startingAvailable: 3,
+			wantRemaining:     2,
+			wantErr:           nil,
+		},
+		{
+			name:              "purchase final item",
+			startingAvailable: 1,
+			wantRemaining:     0,
+			wantErr:           nil,
+		},
+		{
+			name:              "reject purchase when sold out",
+			startingAvailable: 0,
+			wantRemaining:     0,
+			wantErr:           ErrOutOfStock,
+		},
 	}
 
-	if inventory.Available != 0 {
-		t.Errorf(
-			"expected Available to be 0 after first purchase, got %d",
-			inventory.Available,
-		)
-	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			inventory := &Inventory{Available: test.startingAvailable}
 
-	err = inventory.Purchase()
-	if !errors.Is(err, ErrOutOfStock) {
-		t.Errorf("expected ErrOutOfStock, got %v", err)
-	}
+			remaining, err := inventory.Purchase()
 
-	if inventory.Available != 0 {
-		t.Errorf(
-			"expected Available to remain 0 after failed purchase, got %d",
-			inventory.Available,
-		)
+			if !errors.Is(err, test.wantErr) {
+				t.Errorf("expected error %v, got %v", test.wantErr, err)
+			}
+
+			if remaining != test.wantRemaining {
+				t.Errorf("expected remaining %d, got %d", test.wantRemaining, remaining)
+			}
+
+			if inventory.Available != test.wantRemaining {
+				t.Errorf("expected stored inventory %d, got %d", test.wantRemaining, inventory.Available)
+			}
+
+		})
+
 	}
 }
