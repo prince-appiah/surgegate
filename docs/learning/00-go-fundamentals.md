@@ -1,6 +1,6 @@
-# M00 — Go fundamentals: study plan
+# M00 — Go fundamentals
 
-Status: study preparation, awaiting readiness. No exercises, tests, or implementation have been completed. Resources researched on 2026-09-17; availability checked using source pages/search results, not full video playback. Dates below are publication dates when available; a search crawl date is not an update date.
+Status: completed on 2026-09-19. Resources were researched on 2026-09-17; availability was checked using source pages/search results, not full video playback. Dates below are publication dates when available; a search crawl date is not an update date.
 
 ## Why this milestone exists
 
@@ -56,4 +56,55 @@ Generics can be recognized without forcing them into the initial model. Concurre
 5. How does a type satisfy an interface without an implements declaration? When would an interface improve this small program, and when would a concrete type be clearer?
 6. How would you test purchases with zero, one and several units of stock? What do go fmt, go vet and go test each check—and what do they not prove?
 
-These questions guide discussion, not grading. No implementation or claimed learning outcomes should be added until study and readiness. M00 exits after small exercises and actual checks, with the learner able to explain core Go code.
+These questions guided discussion rather than grading. The answers identified topics that needed simpler explanations and later reinforcement before the exercises were completed.
+
+## What we covered
+
+- Modules, packages, `package main`, import paths, and package-level visibility.
+- Struct values, copying, pointer and value receivers, methods, and mutation.
+- Slices and shared backing arrays; maps, zero values, and `make`.
+- Explicit errors, nil success, sentinel errors, multiple returns, and `errors.Is`.
+- Implicit interface satisfaction as a behavior check rather than inheritance.
+- Constants, ordinary tests, table-driven cases, and named subtests.
+- The roles and limits of `go fmt`, `go vet`, and `go test`.
+
+## What we implemented
+
+The `inventory` package is deliberately small. `Inventory` contains an available count, while its pointer-receiver `Purchase` method consumes one unit and returns the remaining count plus an error. `ErrOutOfStock` identifies a rejected purchase, and `UnitsPerPurchase` records the fixed one-unit rule used by this exercise.
+
+The test evolved from a single one-item scenario into table-driven subtests covering ordinary stock, the final item, and an already sold-out inventory. Every case receives fresh state and checks the returned error, returned remaining count, and stored count.
+
+## Problems encountered
+
+- The first test checked the successful call's nil error without making the second purchase. The resulting failure demonstrated that a test must execute the behavior it claims to verify.
+- Method receiver syntax, package-private visibility, interface satisfaction, map zero values, and slice sharing needed additional examples during the checkpoint.
+- Old test code was initially left commented out and IDE metadata appeared in Git status. The obsolete block was removed and `.idea/` was locally excluded rather than published.
+
+These areas should be reinforced in later milestones instead of treating M00 completion as permanent mastery.
+
+## Testing performed
+
+The completed exercise passed:
+
+```text
+go fmt ./...
+go vet ./...
+go test ./...
+```
+
+Verified package result:
+
+```text
+ok github.com/prince-appiah/surgegate/inventory
+```
+
+No benchmark was run, and no performance claim is made.
+
+## Current limitations
+
+- This is sequential in-memory behavior, with no concurrency protection or persistence.
+- `Available` is exported and can be initialized to an invalid negative value; construction and validation belong to later domain modelling.
+- `Purchase` only models a fixed one-unit operation and no product, sale, customer, reservation, or order.
+- The tests establish the listed sequential examples, not complete correctness under every input or concurrent execution.
+
+M01 will begin only after its own freshly researched learning package and checkpoint.

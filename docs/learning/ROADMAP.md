@@ -1,6 +1,6 @@
 # SurgeGate learning roadmap
 
-This is a plan, not a record of completed work. M00 is in study preparation; all later milestones are upcoming. Timing follows understanding, not a deadline.
+This roadmap combines completed and planned work. M00 was completed on 2026-09-19; all later milestones are upcoming. Timing follows understanding, not a deadline.
 
 For each substantial concept: explain the problem and relevance, research at least five videos and five readings, discuss 3–7 checkpoint questions, and pause for readiness. Then build a small increment, test it, explain the results, and document actual learning. New substantial concepts within a milestone get their own learning checkpoint. Basic programming knowledge is assumed; prioritize what differs in Go.
 

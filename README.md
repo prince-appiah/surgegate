@@ -20,15 +20,15 @@ Here, `available` means unallocated stock, not total stock. Expired reservations
 
 ## Current milestone and architecture
 
-**M00 — Go Fundamentals: study preparation.** The repository contains module metadata, a roadmap, and a learning package. No application, API, database, queue, workers, or completed experiments exist yet. No milestones have been completed.
+**M00 — Go Fundamentals: completed.** The repository now contains a small sequential inventory exercise with explicit errors and table-driven tests. The next milestone is M01 — Domain Modelling; its learning package comes before further implementation. No API, database, queue, workers, or infrastructure exist yet.
 
-Start with the [M00 study plan and resources](docs/learning/00-go-fundamentals.md). Implementation follows study and a learning checkpoint.
+See the [M00 learning record and resources](docs/learning/00-go-fundamentals.md) for the exercises, checks, limitations, and topics to reinforce.
 
 ## Learning Journey
 
 | Milestone | Topic | Status |
 | --- | --- | --- |
-| M00 | Go Fundamentals | 🚧 In Progress |
+| M00 | Go Fundamentals | ✅ Completed |
 | M01 | Domain Modelling | ⏳ Upcoming |
 | M02 | HTTP APIs | ⏳ Upcoming |
 | M03 | PostgreSQL | ⏳ Upcoming |
@@ -60,11 +60,11 @@ The HTTP milestone already introduces concurrent request handling. Its shared st
 
 ## Local setup and testing
 
-Work from this repository directory, `surgegate/`, inside the parent workspace. Follow the official [Go installation instructions](https://go.dev/doc/install), then verify `go version`. The module currently declares Go 1.26.0 as its baseline; use a supported stable toolchain that satisfies it.
+Work from this repository directory, `surgegate/`, inside the parent workspace. Follow the official [Go installation instructions](https://go.dev/doc/install), then verify `go version`. The module declares Go 1.26.0 as its baseline and was verified with Go 1.27.1 on macOS/amd64.
 
-`go.mod` was authored manually because Go was unavailable during bootstrap. `example.com/surgegate` is a temporary module path; replace it with the actual repository import path before publishing. There are no third-party dependencies and no `go.sum` yet.
+The module path is `github.com/prince-appiah/surgegate`. There are no third-party dependencies and no `go.sum` yet.
 
-There is nothing to run or test yet. Once the first package and tests exist, run from the repository root:
+Run the checks from the repository root:
 
 ```bash
 go fmt ./...
@@ -83,12 +83,15 @@ Add `go test -race ./...` when concurrency is introduced. A passing race detecto
 ```text
 README.md
 go.mod
+inventory/
+    inventory.go
+    inventory_test.go
 docs/learning/
     ROADMAP.md
     00-go-fundamentals.md
 ```
 
-Application packages and architecture, decision, and benchmark documents will be added when they have real content. No benchmark measurements exist yet. Future reports will identify the environment, implementation revision, workload, correctness counters, latency, throughput, and resource use.
+The `inventory` package is an M00 fundamentals exercise, not the complete M01 domain model. Architecture, decision, and benchmark documents will be added when they have real content. No benchmark measurements exist yet. Future reports will identify the environment, implementation revision, workload, correctness counters, latency, throughput, and resource use.
 
 ## Future direction
 
