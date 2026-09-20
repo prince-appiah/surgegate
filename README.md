@@ -20,16 +20,16 @@ Here, `available` means unallocated stock, not total stock. Expired reservations
 
 ## Current milestone and architecture
 
-**M00 — Go Fundamentals: completed.** The repository now contains a small sequential inventory exercise with explicit errors and table-driven tests. The next milestone is M01 — Domain Modelling; its learning package comes before further implementation. No API, database, queue, workers, or infrastructure exist yet.
+**M01 — Domain Modelling: learning.** M00 produced a small sequential inventory exercise with explicit errors and table-driven tests. M01 now studies how to turn the problem language and invariants into a minimal in-memory Go model. No M01 implementation, API, database, queue, workers, or infrastructure exist yet.
 
-See the [M00 learning record and resources](docs/learning/00-go-fundamentals.md) for the exercises, checks, limitations, and topics to reinforce.
+Read the [M01 learning package](docs/learning/01-domain-model.md) before its checkpoint and implementation. The [M00 learning record](docs/learning/00-go-fundamentals.md) contains its exercises, checks, limitations, and topics to reinforce.
 
 ## Learning Journey
 
 | Milestone | Topic | Status |
 | --- | --- | --- |
 | M00 | Go Fundamentals | ✅ Completed |
-| M01 | Domain Modelling | ⏳ Upcoming |
+| M01 | Domain Modelling | 🚧 In Progress |
 | M02 | HTTP APIs | ⏳ Upcoming |
 | M03 | PostgreSQL | ⏳ Upcoming |
 | M04 | Concurrency Failure Experiment | ⏳ Upcoming |

@@ -1,6 +1,6 @@
 # SurgeGate learning roadmap
 
-This roadmap combines completed and planned work. M00 was completed on 2026-09-19; all later milestones are upcoming. Timing follows understanding, not a deadline.
+This roadmap combines completed and planned work. M00 was completed on 2026-09-19. M01 is in its learning phase; all later milestones are upcoming. Timing follows understanding, not a deadline.
 
 For each substantial concept: explain the problem and relevance, research at least five videos and five readings, discuss 3–7 checkpoint questions, and pause for readiness. Then build a small increment, test it, explain the results, and document actual learning. New substantial concepts within a milestone get their own learning checkpoint. Basic programming knowledge is assumed; prioritize what differs in Go.
 
@@ -46,4 +46,4 @@ Each completed milestone note should explain what was actually learned/implement
 
 Benchmark reports must include environment, implementation revision, workload/concurrency, initial stock, successful outcomes, duplicates, overselling, negative inventory, throughput, P50/P95/P99, errors and relevant resource/queue measurements. Mark unavailable metrics honestly. A future target experiment is 1,000 stock and 50,000 attempts with zero overselling, duplicate orders and negative stock; it is not a measured result.
 
-No branches have been created beyond the initial main branch. Preserve milestone history; the repository owner controls commits and requests other Git changes explicitly.
+The repository owner created `learning/m01-domain-model` from the completed M00 state on `main`. Preserve milestone history; the repository owner controls commits and requests other Git changes explicitly.
